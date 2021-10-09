@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import controller.Controller;
+
 public class Grafica {
 
 	private JFrame frame;
@@ -38,6 +40,11 @@ public class Grafica {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public void registraController(Controller controller) {
+		//btnInvia.addActionListener(controller);
+	
 	}
 
 }
