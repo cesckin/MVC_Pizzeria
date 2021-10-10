@@ -9,7 +9,7 @@ public class Logger {
 	public String makeLog(String stringa) {
 		FileWriter fw = null;
 		try {
-			fw = new FileWriter("GameLog.txt", true);
+			fw = new FileWriter("PizzeriaLog.txt", true);
 			fw.write(stringa);
 			fw.close();
 		} catch (IOException e) {
@@ -18,15 +18,14 @@ public class Logger {
 		return stringa;
 	}
 
-	public void showLog() {
+	public void readLog() {
 		FileReader fr = null;
 		try {
-			fr = new FileReader("GameLog.txt");
+			fr = new FileReader("PizzeriaLog.txt");
 			int i = 0;
-			while ((i = fr.read()) != -1) {
-				System.out.print((char) i);
+			while((i = fr.read()) != -1) {
+				System.out.print((char)i);
 			}
-			Runtime.getRuntime().exec("C:\\Windows\\System32\\notepad.exe GameLog.txt");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

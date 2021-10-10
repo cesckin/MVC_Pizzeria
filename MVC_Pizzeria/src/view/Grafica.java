@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import controller.Controller;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class Grafica {
 
@@ -38,13 +40,22 @@ public class Grafica {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 663, 541);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Grafica.class.getResource("/view/CameriereCliente.jpg")));
+		lblNewLabel.setBounds(0, 0, 649, 503);
+		frame.getContentPane().add(lblNewLabel);
 	}
 	
 	public void registraController(Controller controller) {
 		//btnInvia.addActionListener(controller);
-	
 	}
-
+	
+	public void setVisible(boolean bho) {
+		frame.setVisible(bho);
+	}
+	
 }
