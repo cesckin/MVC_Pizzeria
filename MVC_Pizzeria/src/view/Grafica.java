@@ -18,6 +18,7 @@ public class Grafica {
 	private JFrame frame;
 	private JButton btnInvia;
 	public JComboBox comboBoxOrdinazioni;
+	private JComboBox comboBoxTavoli;
 
 	/**
 	 * Launch the application.
@@ -64,6 +65,11 @@ public class Grafica {
 				new String[] { "MENU", "Margherita", "Capricciosa", "Diavola", "Quattro formaggi", "Ananas" }));
 		comboBoxOrdinazioni.setBounds(23, 44, 106, 22);
 		frame.getContentPane().add(comboBoxOrdinazioni);
+		
+		comboBoxTavoli = new JComboBox();
+		comboBoxTavoli.setModel(new DefaultComboBoxModel(new String[] { "NUMERO TAVOLO", "1", "2", "3", "4", "5","6","7","8","9","10" }));
+		comboBoxTavoli.setBounds(23, 79, 129, 22);
+		frame.getContentPane().add(comboBoxTavoli);
 	}
 
 	public void registraController(Controller controller) {
