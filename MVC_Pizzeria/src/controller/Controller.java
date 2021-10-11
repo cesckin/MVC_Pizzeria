@@ -47,13 +47,13 @@ public class Controller implements ActionListener {
 			ObjectOutputStream oos;
 			
 			try {
-				fos = new FileOutputStream("elenco.dat");
+				fos = new FileOutputStream("Comande.dat");
 				oos = new ObjectOutputStream(fos);
+				oos.writeObject(ordinazione);
+				oos.flush();
 				fos.close();
-			} catch (IOException e2 ) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-				
+			} catch (IOException e1 ) {
+				e1.printStackTrace();
 			}
 		
 		}
