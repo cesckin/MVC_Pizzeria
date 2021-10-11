@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Ordinazione implements Serializable {
 
 	private int numTavolo;
-	private String pizza;
+	private Object pizza;
 	private boolean segnalazioneCucina;
 	private boolean pizzaConsegnata;
 	private boolean segnalazioneCameriere;
@@ -27,12 +27,12 @@ public class Ordinazione implements Serializable {
 		this.numTavolo = numTavolo;
 	}
 
-	public String getPizza() {
+	public Object getPizza() {
 		return pizza;
 	}
 
-	public void setPizza(String pizza) {
-		this.pizza = pizza;
+	public void setPizza(Object object) {
+		this.pizza = object;
 	}
 
 	public boolean isSegnalazioneCucina() {

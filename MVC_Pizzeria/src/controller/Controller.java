@@ -22,14 +22,18 @@ public class Controller implements ActionListener {
 		
 		if (e.getActionCommand().equalsIgnoreCase("Invia")) {
 			
+			String pizza;
+			
 			Ordinazione ordinazione = new Ordinazione(0, null, false, false, false);
 			ordinazione.setNumTavolo(1);
-			ordinazione.setPizza("Pizzosa");
+			ordinazione.setPizza(pizza = grafica.comboBoxOrdinazioni.getSelectedItem().toString());
 			ordinazione.setPizzaConsegnata(true);
 			ordinazione.setSegnalazioneCameriere(true);
 			ordinazione.setSegnalazioneCucina(true);
 			
-			ordinazione.toString();
+			String gigio = ordinazione.toString();
+			
+			System.out.println(gigio);
 			
 		}
 		
