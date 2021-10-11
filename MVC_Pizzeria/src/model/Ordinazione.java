@@ -1,6 +1,8 @@
 package model;
 
-public class Ordinazione {
+import java.io.Serializable;
+
+public class Ordinazione implements Serializable{
 	
 	private int numTavolo;
 	private String pizza;
@@ -37,4 +39,8 @@ public class Ordinazione {
 		this.stato = stato;
 	}
 
+	public String toString() {
+		return "Ordinazione [numTavolo=" + numTavolo + ", pizza=" + pizza + ", stato=" + stato + "]";
+	}
+	
 }
