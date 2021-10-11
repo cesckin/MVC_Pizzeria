@@ -2,7 +2,6 @@ package main;
 
 import controller.Controller;
 import model.Cameriere;
-import model.Ordinazione;
 import view.Grafica;
 
 public class Main {
