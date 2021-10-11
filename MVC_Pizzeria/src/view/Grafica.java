@@ -6,14 +6,17 @@ import javax.swing.JFrame;
 
 import controller.Controller;
 import javax.swing.JLabel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class Grafica {
 
 	private JFrame frame;
+	public JComboBox comboBoxOrdinazioni;
 
 	/**
 	 * Launch the application.
@@ -52,8 +55,14 @@ public class Grafica {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(135, 11, 89, 23);
+		btnNewButton.setBounds(457, 106, 89, 23);
 		frame.getContentPane().add(btnNewButton);
+		
+		comboBoxOrdinazioni = new JComboBox();
+		comboBoxOrdinazioni.setModel(
+		new DefaultComboBoxModel(new String[] { "ORDINAZIONI","pizza margherita","pizza capricciosa","pizza alla diavola", "pizza ai quattro formaggi","pizza all'ananas" }));
+		comboBoxOrdinazioni.setBounds(130, 197, 106, 22);
+		frame.getContentPane().add(comboBoxOrdinazioni);
 	}
 	
 	public void registraController(Controller controller) {
