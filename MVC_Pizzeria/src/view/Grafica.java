@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import controller.Controller;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Grafica {
 
@@ -44,10 +47,13 @@ public class Grafica {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Grafica.class.getResource("/view/CameriereCliente.jpg")));
-		lblNewLabel.setBounds(0, 0, 649, 503);
-		frame.getContentPane().add(lblNewLabel);
+		JButton btnNewButton = new JButton("Invia");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.setBounds(135, 11, 89, 23);
+		frame.getContentPane().add(btnNewButton);
 	}
 	
 	public void registraController(Controller controller) {
@@ -57,5 +63,4 @@ public class Grafica {
 	public void setVisible(boolean bho) {
 		frame.setVisible(bho);
 	}
-	
 }
