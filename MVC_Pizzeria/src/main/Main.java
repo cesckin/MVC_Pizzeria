@@ -2,6 +2,7 @@ package main;
 
 import controller.Controller;
 import model.Cameriere;
+import model.Ordinazione;
 import view.Grafica;
 
 public class Main {
@@ -10,8 +11,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		Grafica g = new Grafica();
 		Cameriere c = new Cameriere();
-		
-		//Controller c = new Controller(g, t, l);
+		Controller con = new Controller(g);
 		g.setVisible(true);
 	}
 
