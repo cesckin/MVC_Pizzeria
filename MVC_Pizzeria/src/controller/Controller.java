@@ -28,35 +28,19 @@ public class Controller implements ActionListener {
 
 			String pizza = "";
 
-			Ordinazione ordinazione = new Ordinazione(0, null, false, false, false);
-			ordinazione.setNumTavolo(1);
-			if (grafica.comboBoxOrdinazioni.getSelectedIndex() == 0) {
+			Ordinazione ordinazione = new Ordinazione(null, null, false, false, false);
+			
+			if ((grafica.comboBoxOrdinazioni.getSelectedIndex() == 0) || (grafica.comboBoxTavoli.getSelectedIndex() == 0)) {
 				System.out.println("Devi inserire un ordinazione valida");
 			} else {
 				ordinazione.setPizza(pizza = grafica.comboBoxOrdinazioni.getSelectedItem().toString());
+				ordinazione.setNumTavolo(grafica.comboBoxTavoli.getSelectedItem().toString());
+				System.out.println("Cameriere ha inserito " + pizza + " nell'ordinazione");
+				System.out.println(grafica.comboBoxTavoli.getSelectedItem().toString());
+				String gigio = ordinazione.toString();
+				System.out.println(gigio);
 			}
-			ordinazione.setPizzaConsegnata(true);
-			ordinazione.setSegnalazioneCameriere(true);
-			ordinazione.setSegnalazioneCucina(true);
-
-			String gigio = ordinazione.toString();
-			System.out.println(gigio);
-
-			// Inserimento comande
-			FileOutputStream fos;
-			ObjectOutputStream oos;
-
-			try {
-				fos = new FileOutputStream("Comande.dat");
-				oos = new ObjectOutputStream(fos);
-				oos.writeObject(ordinazione);
-				oos.flush();
-				fos.close();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-
-			System.out.println("Cameriere ha inserito " + pizza + " nell'ordinazione");
+			
 
 		}
 

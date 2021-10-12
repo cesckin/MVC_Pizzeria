@@ -18,7 +18,7 @@ public class Grafica {
 	private JFrame frame;
 	private JButton btnInvia;
 	public JComboBox comboBoxOrdinazioni;
-	private JComboBox comboBoxTavoli;
+	public JComboBox comboBoxTavoli;
 
 	/**
 	 * Launch the application.

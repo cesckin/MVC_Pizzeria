@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 public class Ordinazione implements Serializable {
 
-	private int numTavolo;
+	private String numTavolo;
 	private Object pizza;
 	private boolean segnalazioneCucina;
 	private boolean pizzaConsegnata;
 	private boolean segnalazioneCameriere;
 
-	public Ordinazione(int numTavolo, String pizza, boolean segnalazioneCucina, boolean pizzaConsegnata, boolean segnalazioneCameriere) {
+	public Ordinazione(String numTavolo, String pizza, boolean segnalazioneCucina, boolean pizzaConsegnata, boolean segnalazioneCameriere) {
 		super();
 		this.numTavolo = numTavolo;
 		this.pizza = pizza;
@@ -19,11 +19,11 @@ public class Ordinazione implements Serializable {
 		this.segnalazioneCameriere = false;
 	}
 
-	public int getNumTavolo() {
+	public String getNumTavolo() {
 		return numTavolo;
 	}
 
-	public void setNumTavolo(int numTavolo) {
+	public void setNumTavolo(String numTavolo) {
 		this.numTavolo = numTavolo;
 	}
 
