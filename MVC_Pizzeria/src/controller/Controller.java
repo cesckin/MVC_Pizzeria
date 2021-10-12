@@ -43,6 +43,7 @@ public class Controller implements ActionListener {
 			String gigio = ordinazione.toString();
 			System.out.println(gigio);
 			
+			//Inserimento comande
 			FileOutputStream fos;
 			ObjectOutputStream oos;
 			
@@ -56,6 +57,9 @@ public class Controller implements ActionListener {
 				e1.printStackTrace();
 			}
 		
+			System.out.println("Cameriere ha inserito "+prodotto+" nell'ordinazione");
+			
+			
 		}
 		
 	}
