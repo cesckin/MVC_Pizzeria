@@ -5,18 +5,12 @@ import java.io.Serializable;
 public class Ordinazione implements Serializable {
 
 	private String numTavolo;
-	private Object pizza;
-	private boolean segnalazioneCucina;
-	private boolean pizzaConsegnata;
-	private boolean segnalazioneCameriere;
+	private String pizza;
 
-	public Ordinazione(String numTavolo, String pizza, boolean segnalazioneCucina, boolean pizzaConsegnata, boolean segnalazioneCameriere) {
+	public Ordinazione(String numTavolo, String pizza) {
 		super();
 		this.numTavolo = numTavolo;
 		this.pizza = pizza;
-		this.segnalazioneCucina = false;
-		this.pizzaConsegnata = false;
-		this.segnalazioneCameriere = false;
 	}
 
 	public String getNumTavolo() {
@@ -27,36 +21,14 @@ public class Ordinazione implements Serializable {
 		this.numTavolo = numTavolo;
 	}
 
-	public Object getPizza() {
+	public String getPizza() {
 		return pizza;
 	}
 
-	public void setPizza(Object object) {
-		this.pizza = object;
+	public void setPizza(String pizza) {
+		this.pizza = pizza;
 	}
-
-	public boolean isSegnalazioneCucina() {
-		return segnalazioneCucina;
-	}
-
-	public void setSegnalazioneCucina(boolean segnalazioneCucina) {
-		this.segnalazioneCucina = segnalazioneCucina;
-	}
-
-	public boolean isPizzaConsegnata() {
-		return pizzaConsegnata;
-	}
-
-	public void setPizzaConsegnata(boolean pizzaConsegnata) {
-		this.pizzaConsegnata = pizzaConsegnata;
-	}
-
-	public boolean isSegnalazioneCameriere() {
-		return segnalazioneCameriere;
-	}
-
-	public void setSegnalazioneCameriere(boolean segnalazioneCameriere) {
-		this.segnalazioneCameriere = segnalazioneCameriere;
-	}
-
+	
+	
+	
 }
