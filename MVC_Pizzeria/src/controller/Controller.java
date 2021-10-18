@@ -8,14 +8,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.concurrent.TimeUnit;
 
 import model.Ordinazione;
+import controller.Time;
 import view.Grafica;
 
 public class Controller implements ActionListener {
 
 	private Grafica grafica;
-	private Object object;
 
 	public Controller(Grafica grafica) {
 
@@ -29,19 +30,19 @@ public class Controller implements ActionListener {
 
 		if (e.getActionCommand().equalsIgnoreCase("Ordina")) {
 			
-			boolean segnalazioneCucina = false; //per il cameriere
+			grafica.cucinaPronto.setVisible(false);
+			grafica.cucinaPreparo.setVisible(false);
+
+			boolean segnalazioneCucina = false; // per il cameriere
 			boolean pizzaConsegnata = false;
-			boolean segnalazioneCameriere = false; //per la cucina
-			
-			Thread thread = new Thread();
+			boolean segnalazioneCameriere = false; // per la cucina
 			
 			Ordinazione ordinazione = new Ordinazione("", "");
 
-			
-
 			ordinazione.setPizza(grafica.comboBoxOrdinazioni.getSelectedItem().toString());
 			ordinazione.setNumTavolo(grafica.comboBoxTavoli.getSelectedItem().toString());
-
+			
+			//Scrivo
 			try {
 				FileOutputStream fos = null;
 				ObjectOutputStream oos = null;
@@ -54,34 +55,39 @@ public class Controller implements ActionListener {
 				e1.printStackTrace();
 			}
 			
-			try {
-				thread.wait(2000);
-			} catch (InterruptedException e1) {}
-			
 			segnalazioneCucina = true;
-			if(segnalazione == true) {
-				grafica.lblCameriere.
+			
+			Time.wait(1000);
+			
+			if (segnalazioneCucina == true) {
+				grafica.lblCameriere.setText(ordinazione.toStringCameriere());
 			}
 			
+			//Leggo
 			FileInputStream fis = null;
 			ObjectInputStream ois = null;
 			try {
-				fis = new FileInputStream("Elenco.dat");
+				fis = new FileInputStream("Ordini.lin");
 				ois = new ObjectInputStream(fis);
-			} catch (IOException e1) {}
-			int i = 0;
-			boolean continua = true;
-			while (continua) {
-				try {
-					Ordinazione ordinazione1 = (Ordinazione) ois.readObject();
-					System.out.println(i);
-					System.out.println(ordinazione1);
-				} catch (ClassNotFoundException | IOException e1) {
-					continua = false;
-				}
-				i++;
+			} catch (IOException e1) {
+			}
+			try {
+				Ordinazione ordinazione1 = (Ordinazione) ois.readObject();
+			} catch (ClassNotFoundException | IOException e1) {
 			}
 
+			Time.wait(1000);
+			
+			grafica.lblCucina.setText(ordinazione.toStringCucina());
+			
+			grafica.cucinaPreparo.setVisible(true);
+			
+			grafica.lblCucina.setText("Ho finito di preparare la pizza");
+			
+			grafica.cucinaPreparo.setVisible(false);
+			grafica.cucinaPronto.setVisible(true);
+			
+			grafica.lblCameriere.setText("Ho consegnato il piatto");
 		}
 
 	}

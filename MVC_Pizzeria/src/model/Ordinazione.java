@@ -28,7 +28,13 @@ public class Ordinazione implements Serializable {
 	public void setPizza(String pizza) {
 		this.pizza = pizza;
 	}
+
+	public String toStringCameriere() {
+		return "Effetuata ordinazione al tavolo "+ numTavolo + " di una " + pizza;
+	}
 	
-	
+	public String toStringCucina() {
+		return "Ricevuta l'ordinazione del tavolo "+ numTavolo + " di una " + pizza;
+	}
 	
 }

@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class Grafica {
 
@@ -54,7 +55,7 @@ public class Grafica {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 800, 500);
+		frame.setBounds(100, 100, 715, 534);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -63,38 +64,47 @@ public class Grafica {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnOrdina.setBounds(40, 112, 89, 23);
+		btnOrdina.setBounds(110, 352, 89, 23);
 		frame.getContentPane().add(btnOrdina);
 
 		comboBoxOrdinazioni = new JComboBox();
 		comboBoxOrdinazioni.setModel(new DefaultComboBoxModel(
 				new String[] { "Margherita", "Capricciosa", "Diavola", "Quattro formaggi", "Ananas" }));
-		comboBoxOrdinazioni.setBounds(23, 44, 106, 22);
+		comboBoxOrdinazioni.setBounds(89, 227, 106, 22);
 		frame.getContentPane().add(comboBoxOrdinazioni);
 
 		comboBoxTavoli = new JComboBox();
 		comboBoxTavoli.setModel(new DefaultComboBoxModel(
 				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-		comboBoxTavoli.setBounds(23, 79, 129, 22);
+		comboBoxTavoli.setBounds(86, 272, 129, 22);
 		frame.getContentPane().add(comboBoxTavoli);
 		
-		lblCucina = new JLabel("New label");
-		lblCucina.setBounds(359, 28, 48, 14);
+		lblCucina = new JLabel("");
+		lblCucina.setEnabled(false);
+		lblCucina.setHorizontalAlignment(SwingConstants.LEFT);
+		lblCucina.setBounds(160, 11, 316, 57);
 		frame.getContentPane().add(lblCucina);
 		
-		lblCameriere = new JLabel("New label");
-		lblCameriere.setBounds(273, 200, 48, 14);
+		lblCameriere = new JLabel("");
+		lblCameriere.setEnabled(false);
+		lblCameriere.setHorizontalAlignment(SwingConstants.LEFT);
+		lblCameriere.setBounds(306, 378, 286, 51);
 		frame.getContentPane().add(lblCameriere);
 		
 		cucinaPronto = new JPanel();
 		cucinaPronto.setBackground(Color.GREEN);
-		cucinaPronto.setBounds(374, 79, 10, 10);
+		cucinaPronto.setBounds(621, 26, 10, 10);
 		frame.getContentPane().add(cucinaPronto);
 		
 		cucinaPreparo = new JPanel();
 		cucinaPreparo.setBackground(Color.RED);
-		cucinaPreparo.setBounds(394, 79, 10, 10);
+		cucinaPreparo.setBounds(641, 26, 10, 10);
 		frame.getContentPane().add(cucinaPreparo);
+		
+		JLabel lblImg = new JLabel("");
+		lblImg.setIcon(new ImageIcon(Grafica.class.getResource("/view/Lin.PNG")));
+		lblImg.setBounds(0, 0, 701, 498);
+		frame.getContentPane().add(lblImg);
 	}
 
 	public JLabel getLblCucina() {
@@ -133,8 +143,6 @@ public class Grafica {
 		btnOrdina.addActionListener(controller);
 	}
 	
-	
-
 	public void setVisible(boolean bho) {
 		frame.setVisible(bho);
 	}
