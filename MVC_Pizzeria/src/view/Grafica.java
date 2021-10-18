@@ -23,6 +23,8 @@ public class Grafica {
 	public JComboBox comboBoxTavoli;
 	public JLabel lblCucina;
 	public JLabel lblCameriere;
+	public JPanel cucinaPronto;
+	public JPanel cucinaPreparo; 
 
 	/**
 	 * Launch the application.
@@ -84,15 +86,47 @@ public class Grafica {
 		lblCameriere.setBounds(273, 200, 48, 14);
 		frame.getContentPane().add(lblCameriere);
 		
-		JPanel cucinaPronto = new JPanel();
+		cucinaPronto = new JPanel();
 		cucinaPronto.setBackground(Color.GREEN);
 		cucinaPronto.setBounds(374, 79, 10, 10);
 		frame.getContentPane().add(cucinaPronto);
 		
-		JPanel cucinaPreparo = new JPanel();
+		cucinaPreparo = new JPanel();
 		cucinaPreparo.setBackground(Color.RED);
 		cucinaPreparo.setBounds(394, 79, 10, 10);
 		frame.getContentPane().add(cucinaPreparo);
+	}
+
+	public JLabel getLblCucina() {
+		return lblCucina;
+	}
+
+	public void setLblCucina(JLabel lblCucina) {
+		this.lblCucina = lblCucina;
+	}
+
+	public JLabel getLblCameriere() {
+		return lblCameriere;
+	}
+
+	public void setLblCameriere(JLabel lblCameriere) {
+		this.lblCameriere = lblCameriere;
+	}
+
+	public JPanel getCucinaPronto() {
+		return cucinaPronto;
+	}
+
+	public void setCucinaPronto(JPanel cucinaPronto) {
+		this.cucinaPronto = cucinaPronto;
+	}
+
+	public JPanel getCucinaPreparo() {
+		return cucinaPreparo;
+	}
+
+	public void setCucinaPreparo(JPanel cucinaPreparo) {
+		this.cucinaPreparo = cucinaPreparo;
 	}
 
 	public void registraController(Controller controller) {
