@@ -25,30 +25,24 @@ public class Controller implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getActionCommand().equalsIgnoreCase("Invia")) {
-
-			String pizza = "";
+		if (e.getActionCommand().equalsIgnoreCase("Ordina")) {
+			
+			boolean segnalazioneCucina = false;
+			boolean pizzaConsegnata = false;
+			boolean segnalazioneCameriere = false;
+			
+			Thread thread = new Thread();
+			
 			Ordinazione ordinazione = new Ordinazione("", "");
-
-			boolean segnalazioneCucina;
-			boolean pizzaConsegnata;
-			boolean segnalazioneCameriere;
 
 			FileOutputStream fos;
 			ObjectOutputStream oos;
 
-			ordinazione.setPizza(pizza = grafica.comboBoxOrdinazioni.getSelectedItem().toString());
+			ordinazione.setPizza(grafica.comboBoxOrdinazioni.getSelectedItem().toString());
 			ordinazione.setNumTavolo(grafica.comboBoxTavoli.getSelectedItem().toString());
 
-			// INUTILE
-			System.out.println("Cameriere ha inserito " + pizza + " nell'ordinazione");
-			System.out.println(grafica.comboBoxTavoli.getSelectedItem().toString());
-			String gigio = ordinazione.toString();
-			System.out.println(gigio);
-			// INUTILE
-
 			try {
-				fos = new FileOutputStream("Comande.dat");
+				fos = new FileOutputStream("Ordini.lin");
 				oos = new ObjectOutputStream(fos);
 				oos.writeObject(ordinazione);
 				oos.flush();
@@ -56,6 +50,13 @@ public class Controller implements ActionListener {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
+			
+			try {
+				thread.wait(2000);
+			} catch (InterruptedException e1) {
+			}
+			
+			
 
 		}
 

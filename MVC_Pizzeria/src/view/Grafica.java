@@ -21,6 +21,8 @@ public class Grafica {
 	private JButton btnOrdina;
 	public JComboBox comboBoxOrdinazioni;
 	public JComboBox comboBoxTavoli;
+	public JLabel lblCucina;
+	public JLabel lblCameriere;
 
 	/**
 	 * Launch the application.
@@ -74,11 +76,11 @@ public class Grafica {
 		comboBoxTavoli.setBounds(23, 79, 129, 22);
 		frame.getContentPane().add(comboBoxTavoli);
 		
-		JLabel lblCucina = new JLabel("New label");
+		lblCucina = new JLabel("New label");
 		lblCucina.setBounds(359, 28, 48, 14);
 		frame.getContentPane().add(lblCucina);
 		
-		JLabel lblCameriere = new JLabel("New label");
+		lblCameriere = new JLabel("New label");
 		lblCameriere.setBounds(273, 200, 48, 14);
 		frame.getContentPane().add(lblCameriere);
 		
@@ -96,6 +98,8 @@ public class Grafica {
 	public void registraController(Controller controller) {
 		btnOrdina.addActionListener(controller);
 	}
+	
+	
 
 	public void setVisible(boolean bho) {
 		frame.setVisible(bho);
