@@ -1,15 +1,15 @@
 package main;
 
-import controller.Controller;
-import view.Grafica;
+import controllerCameriere.ControllerCameriere;
+import viewCameriere.GraficaCameriere;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Grafica g = new Grafica();
-		Controller con = new Controller(g);
+		GraficaCameriere g = new GraficaCameriere();
 		g.setVisible(true);
+		ControllerCameriere con = new ControllerCameriere(g);
 	}
 
 }

@@ -1,10 +1,8 @@
-package view;
+package viewCameriere;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-
-import controller.Controller;
 import javax.swing.JLabel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -16,7 +14,9 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
-public class Grafica {
+import controllerCameriere.ControllerCameriere;
+
+public class GraficaCameriere {
 
 	private JFrame frame;
 	private JButton btnOrdina;
@@ -24,8 +24,9 @@ public class Grafica {
 	public JComboBox comboBoxTavoli;
 	public JLabel lblCucina;
 	public JLabel lblCameriere;
+	public JLabel lblImg;
 	public JPanel cucinaPronto;
-	public JPanel cucinaPreparo; 
+	public JPanel cucinaPreparo;
 
 	/**
 	 * Launch the application.
@@ -34,7 +35,7 @@ public class Grafica {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Grafica window = new Grafica();
+					GraficaCameriere window = new GraficaCameriere();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +47,7 @@ public class Grafica {
 	/**
 	 * Create the application.
 	 */
-	public Grafica() {
+	public GraficaCameriere() {
 		initialize();
 	}
 
@@ -54,11 +55,13 @@ public class Grafica {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 715, 534);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
+		
 		btnOrdina = new JButton("Ordina");
 		btnOrdina.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,13 +82,13 @@ public class Grafica {
 		comboBoxTavoli.setBounds(86, 272, 129, 22);
 		frame.getContentPane().add(comboBoxTavoli);
 		
-		lblCucina = new JLabel("");
+		lblCucina = new JLabel(".");
 		lblCucina.setEnabled(false);
 		lblCucina.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCucina.setBounds(160, 11, 316, 57);
 		frame.getContentPane().add(lblCucina);
 		
-		lblCameriere = new JLabel("");
+		lblCameriere = new JLabel(".");
 		lblCameriere.setEnabled(false);
 		lblCameriere.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCameriere.setBounds(306, 378, 286, 51);
@@ -101,8 +104,8 @@ public class Grafica {
 		cucinaPreparo.setBounds(641, 26, 10, 10);
 		frame.getContentPane().add(cucinaPreparo);
 		
-		JLabel lblImg = new JLabel("");
-		lblImg.setIcon(new ImageIcon(Grafica.class.getResource("/view/Lin.PNG")));
+		lblImg = new JLabel("");
+		lblImg.setIcon(new ImageIcon(GraficaCameriere.class.getResource("/view/Lin.PNG")));
 		lblImg.setBounds(0, 0, 701, 498);
 		frame.getContentPane().add(lblImg);
 	}
@@ -139,7 +142,7 @@ public class Grafica {
 		this.cucinaPreparo = cucinaPreparo;
 	}
 
-	public void registraController(Controller controller) {
+	public void registraController(ControllerCameriere controller) {
 		btnOrdina.addActionListener(controller);
 	}
 	
