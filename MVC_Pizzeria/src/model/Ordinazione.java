@@ -69,11 +69,11 @@ public class Ordinazione implements Serializable {
 	}
 	
 	public String toStringPreparatoPiattoCameriere() {
-		return "Ok, ho preparato la pizza " + pizza + "del tavolo " + numTavolo;
+		return "Ok, ho preparato la pizza " + pizza + " del tavolo " + numTavolo;
 	}
 	
 	public String toStringConsegnatoPiattoCameriere() {
-		return "Ok, ho consegnato la pizza " + pizza + "al tavolo " + numTavolo;
+		return "Ok, ho consegnato la pizza " + pizza + " al tavolo " + numTavolo;
 	}
 
 }
