@@ -15,6 +15,8 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 
 import controllerCameriere.ControllerCameriere;
+import javax.swing.JTextPane;
+import javax.swing.DropMode;
 
 public class GraficaCameriere {
 
@@ -22,7 +24,6 @@ public class GraficaCameriere {
 	public JComboBox comboBoxOrdinazioni;
 	public JComboBox comboBoxTavoli;
 	private JButton btnOrdina;
-	private JButton btnPrendo;
 	private JButton btnConsegno;
 	private JLabel lblDialogo;
 
@@ -56,7 +57,7 @@ public class GraficaCameriere {
 		
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 229, 345);
+		frame.setBounds(100, 100, 343, 348);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -80,16 +81,13 @@ public class GraficaCameriere {
 		comboBoxTavoli.setBounds(32, 54, 129, 22);
 		frame.getContentPane().add(comboBoxTavoli);
 		
-		btnPrendo = new JButton("Prendo piatto");
-		btnPrendo.setBounds(51, 134, 110, 23);
-		frame.getContentPane().add(btnPrendo);
-		
 		btnConsegno = new JButton("Consegna piatto");
 		btnConsegno.setBounds(51, 168, 110, 23);
 		frame.getContentPane().add(btnConsegno);
 		
 		lblDialogo = new JLabel("\"TEXT\"");
-		lblDialogo.setBounds(10, 240, 195, 57);
+		lblDialogo.setEnabled(false);
+		lblDialogo.setBounds(10, 240, 288, 57);
 		frame.getContentPane().add(lblDialogo);
 	}
 
@@ -107,7 +105,6 @@ public class GraficaCameriere {
 
 	public void registraController(ControllerCameriere controller) {
 		btnOrdina.addActionListener(controller);
-		btnPrendo.addActionListener(controller);
 		btnConsegno.addActionListener(controller);
 	}
 }

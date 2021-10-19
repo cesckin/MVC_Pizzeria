@@ -14,7 +14,6 @@ public class GraficaCucina {
 	private JFrame frame;
 	private JButton btnControllo;
 	private JButton btnPreparo;
-	private JButton btnConsegna;
 	private JLabel lblDiscorso;
 
 	/**
@@ -50,19 +49,15 @@ public class GraficaCucina {
 		frame.getContentPane().setLayout(null);
 
 		btnControllo = new JButton("Controllo ordinazione");
-		btnControllo.setBounds(77, 100, 133, 23);
+		btnControllo.setBounds(46, 54, 133, 23);
 		frame.getContentPane().add(btnControllo);
 
 		btnPreparo = new JButton("Prepara pizza");
-		btnPreparo.setBounds(99, 134, 97, 23);
+		btnPreparo.setBounds(56, 89, 97, 23);
 		frame.getContentPane().add(btnPreparo);
 
-		btnConsegna = new JButton("Consegno pizza");
-		btnConsegna.setBounds(89, 168, 107, 23);
-		frame.getContentPane().add(btnConsegna);
-
 		lblDiscorso = new JLabel("\"TEXT\"");
-		lblDiscorso.setBounds(46, 202, 204, 69);
+		lblDiscorso.setBounds(46, 202, 310, 76);
 		frame.getContentPane().add(lblDiscorso);
 	}
 
@@ -81,7 +76,6 @@ public class GraficaCucina {
 	public void registraController(ControllerCucina controller) {
 		btnControllo.addActionListener(controller);
 		btnPreparo.addActionListener(controller);
-		btnConsegna.addActionListener(controller);
 	}
 
 }

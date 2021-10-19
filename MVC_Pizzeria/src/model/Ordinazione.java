@@ -6,16 +6,16 @@ public class Ordinazione implements Serializable {
 
 	private String numTavolo;
 	private String pizza;
-	private boolean segnalazioneCucina;
-	private boolean pizzaConsegnata;
-	private boolean segnalazioneCameriere;
+	private boolean segnalazioneCucina; //pizza da fare
+	private boolean pizzaConsegnata;	//pizza consegnata
+	private boolean segnalazioneCameriere;	//pizza da consegnare
 
 	public Ordinazione(String numTavolo, String pizza, boolean segnalazioneCucina, boolean pizzaConsegnata,
 			boolean segnalazioneCameriere) {
 		super();
 		this.numTavolo = numTavolo;
 		this.pizza = pizza;
-		this.segnalazioneCucina = segnalazioneCucina;
+		this.segnalazioneCucina = segnalazioneCucina; 
 		this.pizzaConsegnata = pizzaConsegnata;
 		this.segnalazioneCameriere = segnalazioneCameriere;
 	}
@@ -64,8 +64,16 @@ public class Ordinazione implements Serializable {
 		return "Effetuata ordinazione al tavolo " + numTavolo + " di una " + pizza;
 	}
 
-	public String toStringCucina() {
+	public String toStringRicevutoPiattoCameriere() {
 		return "Ricevuta l'ordinazione del tavolo " + numTavolo + " di una " + pizza;
+	}
+	
+	public String toStringPreparatoPiattoCameriere() {
+		return "Ok, ho preparato la pizza " + pizza + "del tavolo " + numTavolo;
+	}
+	
+	public String toStringConsegnatoPiattoCameriere() {
+		return "Ok, ho consegnato la pizza " + pizza + "al tavolo " + numTavolo;
 	}
 
 }

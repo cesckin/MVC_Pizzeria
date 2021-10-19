@@ -31,6 +31,7 @@ public class ControllerCameriere implements ActionListener {
 
 			ordinazione.setPizza(grafica.comboBoxOrdinazioni.getSelectedItem().toString());
 			ordinazione.setNumTavolo(grafica.comboBoxTavoli.getSelectedItem().toString());
+			
 			ordinazione.setSegnalazioneCucina(true);
 
 			// Scrivo
@@ -50,7 +51,7 @@ public class ControllerCameriere implements ActionListener {
 
 		}
 
-		if (e.getActionCommand().equalsIgnoreCase("Prendo piatto")) {
+		if (e.getActionCommand().equalsIgnoreCase("Consegno piatto")) {
 
 			FileInputStream fis = null;
 			ObjectInputStream ois = null;
@@ -69,10 +70,12 @@ public class ControllerCameriere implements ActionListener {
 			}
 			
 			if (ordinazione.isSegnalazioneCameriere() == false) {
-				System.out.println("Aspetta");
-			} else {
-				
-				ordinazione.setSegnalazioneCucina(true);
+				grafica.getLblDialogo().setText("Aspetta che la cucina prepari la pizza...");
+			}
+			
+			else if(ordinazione.isSegnalazioneCameriere() == true) {
+					
+				ordinazione.setPizzaConsegnata(true);
 				
 				//Scrivo
 				try {
@@ -86,6 +89,9 @@ public class ControllerCameriere implements ActionListener {
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
+				
+				grafica.getLblDialogo().setText(ordinazione.toStringConsegnatoPiattoCameriere());
+				
 			}
 		}
 	}
