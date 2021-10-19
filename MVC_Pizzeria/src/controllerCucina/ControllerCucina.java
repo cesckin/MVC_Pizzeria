@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 
 import model.Ordinazione;
@@ -18,19 +19,20 @@ public class ControllerCucina implements ActionListener {
 
 	private GraficaCucina grafica;
 
-	public void ControllerCucina(GraficaCucina grafica) {
+	public ControllerCucina(GraficaCucina grafica) {
 		this.grafica = grafica;
 		grafica.registraController(this);
-
 	}
 
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getActionCommand().equalsIgnoreCase("Ordina")) {
-
-			// Leggo
+		if (e.getActionCommand().equalsIgnoreCase("Controllo ordinazione")) {
+			
 			FileInputStream fis = null;
 			ObjectInputStream ois = null;
+			Ordinazione ordinazione = new Ordinazione(null, null, false, false, false);
+			
+			//Leggo
 			try {
 				fis = new FileInputStream("Ordini.lin");
 				ois = new ObjectInputStream(fis);
@@ -38,8 +40,14 @@ public class ControllerCucina implements ActionListener {
 			}
 
 			try {
-				Ordinazione ordinazione1 = (Ordinazione) ois.readObject();
+				ordinazione = (Ordinazione) ois.readObject();
 			} catch (ClassNotFoundException | IOException e1) {
+			}
+			
+			if (ordinazione.isSegnalazioneCucina() == false) {
+				
+			} else {
+				System.out.println("Ok puoi preparare");
 			}
 		}
 

@@ -46,8 +46,48 @@ public class ControllerCameriere implements ActionListener {
 				e1.printStackTrace();
 			}
 
+			grafica.getLblDialogo().setText(ordinazione.toStringCameriere());
+
 		}
 
+		if (e.getActionCommand().equalsIgnoreCase("Prendo piatto")) {
+
+			FileInputStream fis = null;
+			ObjectInputStream ois = null;
+			Ordinazione ordinazione = new Ordinazione(null, null, false, false, false);
+			
+			//Leggo
+			try {
+				fis = new FileInputStream("Ordini.lin");
+				ois = new ObjectInputStream(fis);
+			} catch (IOException e1) {
+			}
+
+			try {
+				ordinazione = (Ordinazione) ois.readObject();
+			} catch (ClassNotFoundException | IOException e1) {
+			}
+			
+			if (ordinazione.isSegnalazioneCameriere() == false) {
+				System.out.println("Aspetta");
+			} else {
+				
+				ordinazione.setSegnalazioneCucina(true);
+				
+				//Scrivo
+				try {
+					FileOutputStream fos = null;
+					ObjectOutputStream oos = null;
+					fos = new FileOutputStream("Ordini.lin");
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(ordinazione);
+					oos.flush();
+					fos.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
 	}
 
 }

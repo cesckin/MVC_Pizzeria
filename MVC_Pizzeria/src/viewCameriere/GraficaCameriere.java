@@ -19,11 +19,12 @@ import controllerCameriere.ControllerCameriere;
 public class GraficaCameriere {
 
 	private JFrame frame;
-	private JButton btnOrdina;
 	public JComboBox comboBoxOrdinazioni;
 	public JComboBox comboBoxTavoli;
+	private JButton btnOrdina;
 	private JButton btnPrendo;
 	private JButton btnConsegno;
+	private JLabel lblDialogo;
 
 	/**
 	 * Launch the application.
@@ -55,7 +56,7 @@ public class GraficaCameriere {
 		
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 222, 256);
+		frame.setBounds(100, 100, 229, 345);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -86,6 +87,18 @@ public class GraficaCameriere {
 		btnConsegno = new JButton("Consegna piatto");
 		btnConsegno.setBounds(51, 168, 110, 23);
 		frame.getContentPane().add(btnConsegno);
+		
+		lblDialogo = new JLabel("\"TEXT\"");
+		lblDialogo.setBounds(10, 240, 195, 57);
+		frame.getContentPane().add(lblDialogo);
+	}
+
+	public JLabel getLblDialogo() {
+		return lblDialogo;
+	}
+
+	public void setLblDialogo(JLabel lblDialogo) {
+		this.lblDialogo = lblDialogo;
 	}
 
 	public void setVisible(boolean bho) {
@@ -97,5 +110,4 @@ public class GraficaCameriere {
 		btnPrendo.addActionListener(controller);
 		btnConsegno.addActionListener(controller);
 	}
-	
 }
