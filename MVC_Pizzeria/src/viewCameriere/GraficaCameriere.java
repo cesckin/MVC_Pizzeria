@@ -22,11 +22,8 @@ public class GraficaCameriere {
 	private JButton btnOrdina;
 	public JComboBox comboBoxOrdinazioni;
 	public JComboBox comboBoxTavoli;
-	public JLabel lblCucina;
-	public JLabel lblCameriere;
-	public JLabel lblImg;
-	public JPanel cucinaPronto;
-	public JPanel cucinaPreparo;
+	private JButton btnPrendo;
+	private JButton btnConsegno;
 
 	/**
 	 * Launch the application.
@@ -58,7 +55,7 @@ public class GraficaCameriere {
 		
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 715, 534);
+		frame.setBounds(100, 100, 222, 256);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -67,86 +64,38 @@ public class GraficaCameriere {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnOrdina.setBounds(110, 352, 89, 23);
+		btnOrdina.setBounds(51, 99, 89, 23);
 		frame.getContentPane().add(btnOrdina);
 
 		comboBoxOrdinazioni = new JComboBox();
 		comboBoxOrdinazioni.setModel(new DefaultComboBoxModel(
 				new String[] { "Margherita", "Capricciosa", "Diavola", "Quattro formaggi", "Ananas" }));
-		comboBoxOrdinazioni.setBounds(89, 227, 106, 22);
+		comboBoxOrdinazioni.setBounds(34, 21, 106, 22);
 		frame.getContentPane().add(comboBoxOrdinazioni);
 
 		comboBoxTavoli = new JComboBox();
 		comboBoxTavoli.setModel(new DefaultComboBoxModel(
 				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-		comboBoxTavoli.setBounds(86, 272, 129, 22);
+		comboBoxTavoli.setBounds(32, 54, 129, 22);
 		frame.getContentPane().add(comboBoxTavoli);
 		
-		lblCucina = new JLabel(".");
-		lblCucina.setEnabled(false);
-		lblCucina.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCucina.setBounds(160, 11, 316, 57);
-		frame.getContentPane().add(lblCucina);
+		btnPrendo = new JButton("Prendo piatto");
+		btnPrendo.setBounds(51, 134, 110, 23);
+		frame.getContentPane().add(btnPrendo);
 		
-		lblCameriere = new JLabel(".");
-		lblCameriere.setEnabled(false);
-		lblCameriere.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCameriere.setBounds(306, 378, 286, 51);
-		frame.getContentPane().add(lblCameriere);
-		
-		cucinaPronto = new JPanel();
-		cucinaPronto.setBackground(Color.GREEN);
-		cucinaPronto.setBounds(621, 26, 10, 10);
-		frame.getContentPane().add(cucinaPronto);
-		
-		cucinaPreparo = new JPanel();
-		cucinaPreparo.setBackground(Color.RED);
-		cucinaPreparo.setBounds(641, 26, 10, 10);
-		frame.getContentPane().add(cucinaPreparo);
-		
-		lblImg = new JLabel("");
-		lblImg.setIcon(new ImageIcon(GraficaCameriere.class.getResource("/view/Lin.PNG")));
-		lblImg.setBounds(0, 0, 701, 498);
-		frame.getContentPane().add(lblImg);
+		btnConsegno = new JButton("Consegna piatto");
+		btnConsegno.setBounds(51, 168, 110, 23);
+		frame.getContentPane().add(btnConsegno);
 	}
 
-	public JLabel getLblCucina() {
-		return lblCucina;
-	}
-
-	public void setLblCucina(JLabel lblCucina) {
-		this.lblCucina = lblCucina;
-	}
-
-	public JLabel getLblCameriere() {
-		return lblCameriere;
-	}
-
-	public void setLblCameriere(JLabel lblCameriere) {
-		this.lblCameriere = lblCameriere;
-	}
-
-	public JPanel getCucinaPronto() {
-		return cucinaPronto;
-	}
-
-	public void setCucinaPronto(JPanel cucinaPronto) {
-		this.cucinaPronto = cucinaPronto;
-	}
-
-	public JPanel getCucinaPreparo() {
-		return cucinaPreparo;
-	}
-
-	public void setCucinaPreparo(JPanel cucinaPreparo) {
-		this.cucinaPreparo = cucinaPreparo;
+	public void setVisible(boolean bho) {
+		frame.setVisible(bho);
 	}
 
 	public void registraController(ControllerCameriere controller) {
 		btnOrdina.addActionListener(controller);
+		btnPrendo.addActionListener(controller);
+		btnConsegno.addActionListener(controller);
 	}
 	
-	public void setVisible(boolean bho) {
-		frame.setVisible(bho);
-	}
 }
