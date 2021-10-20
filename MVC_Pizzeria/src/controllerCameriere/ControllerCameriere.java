@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
 
 import javax.swing.SwingUtilities;
 import model.Ordinazione;
@@ -17,6 +18,7 @@ import viewCameriere.GraficaCameriere;
 public class ControllerCameriere implements ActionListener {
 
 	private GraficaCameriere grafica;
+	ArrayList<Ordinazione> listaOrdini = new ArrayList<>();
 
 	public ControllerCameriere(GraficaCameriere grafica) {
 		this.grafica = grafica;
@@ -28,7 +30,7 @@ public class ControllerCameriere implements ActionListener {
 		if (e.getActionCommand().equalsIgnoreCase("Ordina")) {
 
 			Ordinazione ordinazione = new Ordinazione("", "", false, false, false);
-
+			
 			ordinazione.setPizza(grafica.comboBoxOrdinazioni.getSelectedItem().toString());
 			ordinazione.setNumTavolo(grafica.comboBoxTavoli.getSelectedItem().toString());
 			
@@ -43,6 +45,8 @@ public class ControllerCameriere implements ActionListener {
 				oos.writeObject(ordinazione);
 				oos.flush();
 				fos.close();
+				listaOrdini.add(ordinazione);
+				System.out.println(ordinazione.toStringArrList());
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}

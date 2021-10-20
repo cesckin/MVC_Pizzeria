@@ -75,5 +75,7 @@ public class Ordinazione implements Serializable {
 	public String toStringConsegnatoPiattoCameriere() {
 		return "Ok, ho consegnato la pizza " + pizza + " al tavolo " + numTavolo;
 	}
-
+	public String toStringArrList() {
+		return "tavolo n: " + numTavolo + " pizza: " + pizza;
+	}
 }
