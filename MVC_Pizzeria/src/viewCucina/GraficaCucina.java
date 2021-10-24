@@ -14,6 +14,9 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
+import javax.swing.ImageIcon;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
 
 public class GraficaCucina {
 
@@ -21,8 +24,6 @@ public class GraficaCucina {
 	private JButton btnControllo;
 	private JButton btnPreparo;
 	private JTextArea textNotifiche;
-	private JLabel lblTitolo;
-	private JTextField textPizza;
 	private JPanel panelGreen;
 	private JPanel panelRed;
 
@@ -54,57 +55,47 @@ public class GraficaCucina {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 261, 329);
+		frame.setBounds(100, 100, 434, 382);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		btnControllo = new JButton("Aggiorna");
-		btnControllo.setBounds(59, 88, 97, 23);
+		btnControllo.setForeground(SystemColor.text);
+		btnControllo.setBackground(SystemColor.textInactiveText);
+		btnControllo.setBounds(227, 155, 96, 23);
 		frame.getContentPane().add(btnControllo);
 
 		btnPreparo = new JButton("Prepara pizza");
-		btnPreparo.setBounds(59, 122, 97, 23);
+		btnPreparo.setForeground(SystemColor.text);
+		btnPreparo.setBackground(SystemColor.textInactiveText);
+		btnPreparo.setBounds(92, 155, 132, 23);
 		frame.getContentPane().add(btnPreparo);
 		
 		textNotifiche = new JTextArea();
+		textNotifiche.setBackground(UIManager.getColor("Button.light"));
 		textNotifiche.setEditable(false);
 		textNotifiche.setLineWrap(true);
-		textNotifiche.setBounds(23, 211, 195, 70);
+		textNotifiche.setBounds(116, 29, 265, 35);
 		frame.getContentPane().add(textNotifiche);
-		
-		lblTitolo = new JLabel("Pizzeria Lin");
-		lblTitolo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitolo.setForeground(Color.DARK_GRAY);
-		lblTitolo.setBounds(23, 16, 195, 28);
-		frame.getContentPane().add(lblTitolo);
-		
-		textPizza = new JTextField();
-		textPizza.setEditable(false);
-		textPizza.setBounds(10, 54, 227, 23);
-		frame.getContentPane().add(textPizza);
-		textPizza.setColumns(10);
 		
 		panelGreen = new JPanel();
 		panelGreen.setBackground(new Color(124, 252, 0));
-		panelGreen.setBounds(173, 88, 23, 23);
+		panelGreen.setBounds(42, 38, 23, 21);
 		frame.getContentPane().add(panelGreen);
 		
 		panelRed = new JPanel();
 		panelRed.setBackground(new Color(255, 0, 0));
-		panelRed.setBounds(173, 122, 23, 23);
+		panelRed.setBounds(82, 36, 24, 24);
 		frame.getContentPane().add(panelRed);
+		
+		JLabel lblSfondo = new JLabel("");
+		lblSfondo.setIcon(new ImageIcon(GraficaCucina.class.getResource("/viewCucina/Cucina.png")));
+		lblSfondo.setBounds(0, 0, 439, 343);
+		frame.getContentPane().add(lblSfondo);
 	}
 
 	public void setVisible(boolean bho) {
 		frame.setVisible(bho);
-	}
-
-	public JTextField getTextPizza() {
-		return textPizza;
-	}
-
-	public void setTextPizza(JTextField textPizza) {
-		this.textPizza = textPizza;
 	}
 
 	public JTextArea getTextNotifiche() {

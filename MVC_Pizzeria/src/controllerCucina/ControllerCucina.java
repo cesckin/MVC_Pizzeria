@@ -55,7 +55,7 @@ public class ControllerCucina implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Aspetta un'ordinazione");
 			} else {
 				grafica.getTextNotifiche().setText(ordinazione.toStringRicevutoPiattoCameriere());
-				grafica.getTextPizza().setText(ordinazione.toStringCibo());
+				grafica.getTextNotifiche().setText(ordinazione.toStringCibo());
 				
 			}
 		}
