@@ -8,13 +8,20 @@ import controllerCameriere.ControllerCameriere;
 import controllerCucina.ControllerCucina;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.DropMode;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
 
 public class GraficaCucina {
 
 	private JFrame frame;
 	private JButton btnControllo;
 	private JButton btnPreparo;
-	private JLabel lblDiscorso;
+	private JTextArea textNotifiche;
+	private JLabel lblTitolo;
+	private JTextField textPizza;
 
 	/**
 	 * Launch the application.
@@ -44,38 +51,59 @@ public class GraficaCucina {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 395, 337);
+		frame.setBounds(100, 100, 261, 329);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		btnControllo = new JButton("Controllo ordinazione");
-		btnControllo.setBounds(46, 54, 133, 23);
+		btnControllo = new JButton("Aggiorna");
+		btnControllo.setBounds(59, 88, 97, 23);
 		frame.getContentPane().add(btnControllo);
 
 		btnPreparo = new JButton("Prepara pizza");
-		btnPreparo.setBounds(56, 89, 97, 23);
+		btnPreparo.setBounds(59, 122, 97, 23);
 		frame.getContentPane().add(btnPreparo);
-
-		lblDiscorso = new JLabel("\"TEXT\"");
-		lblDiscorso.setBounds(46, 202, 310, 76);
-		frame.getContentPane().add(lblDiscorso);
+		
+		textNotifiche = new JTextArea();
+		textNotifiche.setEditable(false);
+		textNotifiche.setLineWrap(true);
+		textNotifiche.setBounds(23, 211, 195, 70);
+		frame.getContentPane().add(textNotifiche);
+		
+		lblTitolo = new JLabel("Pizzeria Lin");
+		lblTitolo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitolo.setForeground(Color.DARK_GRAY);
+		lblTitolo.setBounds(23, 16, 195, 28);
+		frame.getContentPane().add(lblTitolo);
+		
+		textPizza = new JTextField();
+		textPizza.setEditable(false);
+		textPizza.setBounds(10, 54, 227, 23);
+		frame.getContentPane().add(textPizza);
+		textPizza.setColumns(10);
 	}
 
 	public void setVisible(boolean bho) {
 		frame.setVisible(bho);
 	}
 
-	public JLabel getLblDiscorso() {
-		return lblDiscorso;
+	public JTextField getTextPizza() {
+		return textPizza;
 	}
 
-	public void setLblDiscorso(JLabel lblDiscorso) {
-		this.lblDiscorso = lblDiscorso;
+	public void setTextPizza(JTextField textPizza) {
+		this.textPizza = textPizza;
+	}
+
+	public JTextArea getTextNotifiche() {
+		return textNotifiche;
+	}
+
+	public void setTextNotifiche(JTextArea textNotifiche) {
+		this.textNotifiche = textNotifiche;
 	}
 
 	public void registraController(ControllerCucina controller) {
 		btnControllo.addActionListener(controller);
 		btnPreparo.addActionListener(controller);
 	}
-
 }

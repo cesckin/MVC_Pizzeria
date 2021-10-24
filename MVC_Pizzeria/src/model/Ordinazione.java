@@ -6,16 +6,16 @@ public class Ordinazione implements Serializable {
 
 	private String numTavolo;
 	private String pizza;
-	private boolean segnalazioneCucina; //pizza da fare
-	private boolean pizzaConsegnata;	//pizza consegnata
-	private boolean segnalazioneCameriere;	//pizza da consegnare
+	private boolean segnalazioneCucina; // pizza da fare
+	private boolean pizzaConsegnata; // pizza consegnata
+	private boolean segnalazioneCameriere; // pizza da consegnare
 
 	public Ordinazione(String numTavolo, String pizza, boolean segnalazioneCucina, boolean pizzaConsegnata,
 			boolean segnalazioneCameriere) {
 		super();
 		this.numTavolo = numTavolo;
 		this.pizza = pizza;
-		this.segnalazioneCucina = segnalazioneCucina; 
+		this.segnalazioneCucina = segnalazioneCucina;
 		this.pizzaConsegnata = pizzaConsegnata;
 		this.segnalazioneCameriere = segnalazioneCameriere;
 	}
@@ -60,6 +60,18 @@ public class Ordinazione implements Serializable {
 		this.segnalazioneCameriere = segnalazioneCameriere;
 	}
 
+	public String toStringCibo() {
+		return "Devi preparare una " + pizza + " per il tav. " + numTavolo;
+	}
+	
+	public String toStringPizzaInPreparazione() {
+		return "Aspetta la pizza " + pizza + " è in preparazione...";
+	}
+
+	public String toStringConsegnaPiatto() {
+		return "La pizza " + pizza + " è pronta, consegnala al tavolo n. " + numTavolo ;
+	}
+
 	public String toStringCameriere() {
 		return "Effetuata ordinazione al tavolo " + numTavolo + " di una " + pizza;
 	}
@@ -67,15 +79,17 @@ public class Ordinazione implements Serializable {
 	public String toStringRicevutoPiattoCameriere() {
 		return "Ricevuta l'ordinazione del tavolo " + numTavolo + " di una " + pizza;
 	}
-	
+
 	public String toStringPreparatoPiattoCameriere() {
-		return "Ok, ho preparato la pizza " + pizza + " del tavolo " + numTavolo;
+		return "Ho preparato la pizza " + pizza + " del tavolo " + numTavolo;
+	}
+
+	public String toStringConsegnatoPiattoCameriere() {
+		return "Ho consegnato la pizza " + pizza + " al tavolo " + numTavolo;
 	}
 	
-	public String toStringConsegnatoPiattoCameriere() {
-		return "Ok, ho consegnato la pizza " + pizza + " al tavolo " + numTavolo;
+	public String toStringBenvenuto() {
+		return "Benvenuto in pizza Listolante Lin...cosa vuole oldinale?";
 	}
-	public String toStringArrList() {
-		return "tavolo n: " + numTavolo + " pizza: " + pizza;
-	}
+
 }

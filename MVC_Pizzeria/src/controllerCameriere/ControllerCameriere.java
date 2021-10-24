@@ -5,12 +5,14 @@ import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import model.Ordinazione;
 import viewCameriere.GraficaCameriere;
@@ -18,22 +20,25 @@ import viewCameriere.GraficaCameriere;
 public class ControllerCameriere implements ActionListener {
 
 	private GraficaCameriere grafica;
-	ArrayList<Ordinazione> listaOrdini = new ArrayList<>();
 
 	public ControllerCameriere(GraficaCameriere grafica) {
+		Ordinazione ordinazione = new Ordinazione("", "", false, false, false);
 		this.grafica = grafica;
 		grafica.registraController(this);
+		grafica.getTextNotifiche().setText(ordinazione.toStringBenvenuto());
 	}
 
 	public void actionPerformed(ActionEvent e) {
 
+		Ordinazione ordinazione = new Ordinazione("", "", false, false, false);
+
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+
 		if (e.getActionCommand().equalsIgnoreCase("Ordina")) {
 
-			Ordinazione ordinazione = new Ordinazione("", "", false, false, false);
-			
 			ordinazione.setPizza(grafica.comboBoxOrdinazioni.getSelectedItem().toString());
 			ordinazione.setNumTavolo(grafica.comboBoxTavoli.getSelectedItem().toString());
-			
 			ordinazione.setSegnalazioneCucina(true);
 
 			// Scrivo
@@ -45,43 +50,40 @@ public class ControllerCameriere implements ActionListener {
 				oos.writeObject(ordinazione);
 				oos.flush();
 				fos.close();
-				listaOrdini.add(ordinazione);
-				System.out.println(ordinazione.toStringArrList());
+
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
+			//
 
-			grafica.getLblDialogo().setText(ordinazione.toStringCameriere());
+			grafica.getTextNotifiche().setText(ordinazione.toStringCameriere());
 
 		}
 
-		if (e.getActionCommand().equalsIgnoreCase("Consegno piatto")) {
+		if (e.getActionCommand().equalsIgnoreCase("Consegna piatto")) {
 
-			FileInputStream fis = null;
-			ObjectInputStream ois = null;
-			Ordinazione ordinazione = new Ordinazione(null, null, false, false, false);
-			
-			//Leggo
+			// Leggo
 			try {
 				fis = new FileInputStream("Ordini.lin");
 				ois = new ObjectInputStream(fis);
-			} catch (IOException e1) {
-			}
-
-			try {
 				ordinazione = (Ordinazione) ois.readObject();
 			} catch (ClassNotFoundException | IOException e1) {
 			}
-			
-			if (ordinazione.isSegnalazioneCameriere() == false) {
-				grafica.getLblDialogo().setText("Aspetta che la cucina prepari la pizza...");
-			}
-			
-			else if(ordinazione.isSegnalazioneCameriere() == true) {
-					
+			//
+
+			if ((ordinazione.isSegnalazioneCameriere() == false) && (ordinazione.isSegnalazioneCucina() == false)) {
+				grafica.getTextNotifiche().setText("Mona, devi creare un'ordinazione...");
+				JOptionPane.showMessageDialog(null, "Mona, crea un'ordinazione");
+
+			} else if (ordinazione.isSegnalazioneCameriere() == false) {
+				grafica.getTextNotifiche().setText(ordinazione.toStringPizzaInPreparazione());
+				JOptionPane.showMessageDialog(null, "Aspetta la cucina");
+
+			} else {
+
 				ordinazione.setPizzaConsegnata(true);
-				
-				//Scrivo
+
+				// Scrivo
 				try {
 					FileOutputStream fos = null;
 					ObjectOutputStream oos = null;
@@ -93,10 +95,44 @@ public class ControllerCameriere implements ActionListener {
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				
-				grafica.getLblDialogo().setText(ordinazione.toStringConsegnatoPiattoCameriere());
-				
+				//
+
+				grafica.getTextNotifiche().setText(ordinazione.toStringConsegnatoPiattoCameriere());
+
+				try {
+					FileWriter file = new FileWriter("Ordini.lin");
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+
 			}
+		}
+
+		if (e.getActionCommand().equalsIgnoreCase("Aggiorna")) {
+
+			// Leggo
+			try {
+				fis = new FileInputStream("Ordini.lin");
+				ois = new ObjectInputStream(fis);
+				ordinazione = (Ordinazione) ois.readObject();
+			} catch (ClassNotFoundException | IOException e1) {
+			}
+			//
+
+			if (ordinazione.isSegnalazioneCucina() == false) {
+				grafica.getTextNotifiche().setText("Mona, devi creare un'ordinazione...");
+				JOptionPane.showMessageDialog(null, "Mona, crea un'ordinazione");
+
+			} else {
+				JOptionPane.showMessageDialog(null, "Pizza in preparazione...");
+				grafica.getTextNotifiche().setText(ordinazione.toStringPizzaInPreparazione());
+			}
+
+			if (ordinazione.isSegnalazioneCameriere() == true) {
+				JOptionPane.showMessageDialog(null, "Pizza pronta");
+				grafica.getTextNotifiche().setText(ordinazione.toStringConsegnaPiatto());
+			}
+
 		}
 	}
 
