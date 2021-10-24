@@ -7,15 +7,17 @@ public class Ordinazione implements Serializable {
 	private String numTavolo;
 	private String pizza;
 	private boolean segnalazioneCucina; // pizza da fare
-	private boolean pizzaConsegnata; // pizza consegnata
+	private boolean pizzaPreparazione; // pizza pronta
 	private boolean segnalazioneCameriere; // pizza da consegnare
+	private boolean pizzaConsegnata; // pizza consegnata
 
-	public Ordinazione(String numTavolo, String pizza, boolean segnalazioneCucina, boolean pizzaConsegnata,
+	public Ordinazione(String numTavolo, String pizza, boolean segnalazioneCucina, boolean pizzaPreparazione,boolean pizzaConsegnata,
 			boolean segnalazioneCameriere) {
 		super();
 		this.numTavolo = numTavolo;
 		this.pizza = pizza;
 		this.segnalazioneCucina = segnalazioneCucina;
+		this.pizzaPreparazione = pizzaPreparazione;
 		this.pizzaConsegnata = pizzaConsegnata;
 		this.segnalazioneCameriere = segnalazioneCameriere;
 	}
@@ -60,16 +62,24 @@ public class Ordinazione implements Serializable {
 		this.segnalazioneCameriere = segnalazioneCameriere;
 	}
 
+	public boolean isPizzaPreparazione() {
+		return pizzaPreparazione;
+	}
+
+	public void setPizzaPreparazione(boolean pizzaPreparazione) {
+		this.pizzaPreparazione = pizzaPreparazione;
+	}
+
 	public String toStringCibo() {
 		return "Devi preparare una " + pizza + " per il tav. " + numTavolo;
 	}
-	
+
 	public String toStringPizzaInPreparazione() {
 		return "Aspetta la pizza " + pizza + " è in preparazione...";
 	}
 
 	public String toStringConsegnaPiatto() {
-		return "La pizza " + pizza + " è pronta, consegnala al tavolo n. " + numTavolo ;
+		return "La pizza " + pizza + " è pronta, consegnala al tavolo n. " + numTavolo;
 	}
 
 	public String toStringCameriere() {
@@ -87,7 +97,7 @@ public class Ordinazione implements Serializable {
 	public String toStringConsegnatoPiattoCameriere() {
 		return "Ho consegnato la pizza " + pizza + " al tavolo " + numTavolo;
 	}
-	
+
 	public String toStringBenvenuto() {
 		return "Benvenuto in pizza Listolante Lin...cosa vuole oldinale?";
 	}

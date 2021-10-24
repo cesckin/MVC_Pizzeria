@@ -34,7 +34,7 @@ public class ControllerCucina implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 
-		Ordinazione ordinazione = new Ordinazione(null, null, false, false, false);
+		Ordinazione ordinazione = new Ordinazione(null, null, false, false, false, false);
 
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
@@ -56,6 +56,7 @@ public class ControllerCucina implements ActionListener {
 			} else {
 				grafica.getTextNotifiche().setText(ordinazione.toStringRicevutoPiattoCameriere());
 				grafica.getTextPizza().setText(ordinazione.toStringCibo());
+				
 			}
 		}
 
@@ -73,6 +74,9 @@ public class ControllerCucina implements ActionListener {
 			if (ordinazione.isSegnalazioneCucina() == true) {
 
 				ordinazione.setSegnalazioneCameriere(true);
+				ordinazione.setPizzaPreparazione(false);
+				grafica.getPanelGreen().setVisible(true);
+				grafica.getPanelRed().setVisible(false);
 
 				// scrivo
 				try {

@@ -11,10 +11,12 @@ public class Main {
 		// TODO Auto-generated method stub
 		GraficaCameriere graficaCameriere = new GraficaCameriere();
 		graficaCameriere.setVisible(true);
-		ControllerCameriere controllerCameriere = new ControllerCameriere(graficaCameriere);
 		GraficaCucina graficaCucina = new GraficaCucina();
 		graficaCucina.setVisible(true);
+		ControllerCameriere controllerCameriere = new ControllerCameriere(graficaCameriere, graficaCucina);
 		ControllerCucina controllerCucina = new ControllerCucina(graficaCucina);
+		graficaCucina.getPanelGreen().setVisible(false);
+		graficaCucina.getPanelRed().setVisible(false);
 	}
 
 }

@@ -13,6 +13,7 @@ import javax.swing.DropMode;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+import javax.swing.JPanel;
 
 public class GraficaCucina {
 
@@ -22,6 +23,8 @@ public class GraficaCucina {
 	private JTextArea textNotifiche;
 	private JLabel lblTitolo;
 	private JTextField textPizza;
+	private JPanel panelGreen;
+	private JPanel panelRed;
 
 	/**
 	 * Launch the application.
@@ -80,6 +83,16 @@ public class GraficaCucina {
 		textPizza.setBounds(10, 54, 227, 23);
 		frame.getContentPane().add(textPizza);
 		textPizza.setColumns(10);
+		
+		panelGreen = new JPanel();
+		panelGreen.setBackground(new Color(124, 252, 0));
+		panelGreen.setBounds(173, 88, 23, 23);
+		frame.getContentPane().add(panelGreen);
+		
+		panelRed = new JPanel();
+		panelRed.setBackground(new Color(255, 0, 0));
+		panelRed.setBounds(173, 122, 23, 23);
+		frame.getContentPane().add(panelRed);
 	}
 
 	public void setVisible(boolean bho) {
@@ -100,6 +113,22 @@ public class GraficaCucina {
 
 	public void setTextNotifiche(JTextArea textNotifiche) {
 		this.textNotifiche = textNotifiche;
+	}
+
+	public JPanel getPanelGreen() {
+		return panelGreen;
+	}
+
+	public void setPanelGreen(JPanel panelGreen) {
+		this.panelGreen = panelGreen;
+	}
+
+	public JPanel getPanelRed() {
+		return panelRed;
+	}
+
+	public void setPanelRed(JPanel panelRed) {
+		this.panelRed = panelRed;
 	}
 
 	public void registraController(ControllerCucina controller) {
