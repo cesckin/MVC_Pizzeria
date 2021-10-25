@@ -11,8 +11,8 @@ public class Ordinazione implements Serializable {
 	private boolean segnalazioneCameriere; // pizza da consegnare
 	private boolean pizzaConsegnata; // pizza consegnata
 
-	public Ordinazione(String numTavolo, String pizza, boolean segnalazioneCucina, boolean pizzaPreparazione,boolean pizzaConsegnata,
-			boolean segnalazioneCameriere) {
+	public Ordinazione(String numTavolo, String pizza, boolean segnalazioneCucina, boolean pizzaPreparazione,
+			boolean pizzaConsegnata, boolean segnalazioneCameriere) {
 		super();
 		this.numTavolo = numTavolo;
 		this.pizza = pizza;

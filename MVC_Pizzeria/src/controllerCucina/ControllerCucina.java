@@ -56,7 +56,7 @@ public class ControllerCucina implements ActionListener {
 			} else {
 				grafica.getTextNotifiche().setText(ordinazione.toStringRicevutoPiattoCameriere());
 				grafica.getTextNotifiche().setText(ordinazione.toStringCibo());
-				
+
 			}
 		}
 

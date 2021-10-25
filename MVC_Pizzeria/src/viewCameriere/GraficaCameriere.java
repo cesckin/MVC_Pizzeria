@@ -59,15 +59,14 @@ public class GraficaCameriere {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
-		
+
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		frame.getContentPane().setForeground(SystemColor.menu);
 		frame.setBounds(100, 100, 319, 429);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		btnOrdina = new JButton("Ordina");
 		btnOrdina.setBackground(new Color(153, 204, 102));
 		btnOrdina.addActionListener(new ActionListener() {
@@ -79,34 +78,35 @@ public class GraficaCameriere {
 
 		comboBoxOrdinazioni = new JComboBox();
 		comboBoxOrdinazioni.setBackground(SystemColor.inactiveCaptionBorder);
-		comboBoxOrdinazioni.setModel(new DefaultComboBoxModel(new String[] {"Margherita", "Capricciosa", "Lin_Special", "Diavola", "Quattro_Formaggi", "Tonno", "Ingorda", "", "", ""}));
+		comboBoxOrdinazioni.setModel(new DefaultComboBoxModel(new String[] { "Margherita", "Capricciosa", "Lin_Special",
+				"Diavola", "Quattro_Formaggi", "Tonno", "Ingorda", "", "", "" }));
 		comboBoxOrdinazioni.setBounds(83, 124, 98, 22);
 		frame.getContentPane().add(comboBoxOrdinazioni);
 
 		comboBoxTavoli = new JComboBox();
 		comboBoxTavoli.setBackground(SystemColor.inactiveCaptionBorder);
-		comboBoxTavoli.setModel(new DefaultComboBoxModel(
-				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+		comboBoxTavoli
+				.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 		comboBoxTavoli.setBounds(186, 124, 37, 22);
 		frame.getContentPane().add(comboBoxTavoli);
-		
+
 		btnConsegno = new JButton("Consegna piatto");
 		btnConsegno.setBackground(SystemColor.activeCaption);
 		btnConsegno.setBounds(83, 209, 140, 23);
 		frame.getContentPane().add(btnConsegno);
-		
+
 		textNotifiche = new JTextArea();
 		textNotifiche.setBackground(SystemColor.menu);
 		textNotifiche.setLineWrap(true);
 		textNotifiche.setEditable(false);
 		textNotifiche.setBounds(83, 236, 140, 69);
 		frame.getContentPane().add(textNotifiche);
-		
+
 		btnAggiorna = new JButton("Aggiorna");
 		btnAggiorna.setBackground(new Color(255, 255, 153));
 		btnAggiorna.setBounds(106, 183, 92, 23);
 		frame.getContentPane().add(btnAggiorna);
-		
+
 		lblSfondo = new JLabel("");
 		lblSfondo.setBackground(new Color(51, 51, 51));
 		lblSfondo.setIcon(new ImageIcon(GraficaCameriere.class.getResource("/viewCameriere/Cameriere.png")));

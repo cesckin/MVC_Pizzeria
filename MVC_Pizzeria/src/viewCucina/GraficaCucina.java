@@ -55,7 +55,7 @@ public class GraficaCucina {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 434, 382);
+		frame.setBounds(100, 100, 431, 378);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -70,27 +70,27 @@ public class GraficaCucina {
 		btnPreparo.setBackground(SystemColor.textInactiveText);
 		btnPreparo.setBounds(92, 155, 132, 23);
 		frame.getContentPane().add(btnPreparo);
-		
+
 		textNotifiche = new JTextArea();
 		textNotifiche.setBackground(SystemColor.controlHighlight);
 		textNotifiche.setEditable(false);
 		textNotifiche.setLineWrap(true);
 		textNotifiche.setBounds(116, 29, 265, 35);
 		frame.getContentPane().add(textNotifiche);
-		
+
 		panelGreen = new JPanel();
 		panelGreen.setBackground(new Color(124, 252, 0));
 		panelGreen.setBounds(42, 36, 23, 23);
 		frame.getContentPane().add(panelGreen);
-		
+
 		panelRed = new JPanel();
 		panelRed.setBackground(new Color(255, 0, 0));
 		panelRed.setBounds(81, 36, 25, 24);
 		frame.getContentPane().add(panelRed);
-		
+
 		JLabel lblSfondo = new JLabel("");
 		lblSfondo.setIcon(new ImageIcon(GraficaCucina.class.getResource("/viewCucina/Cucina.png")));
-		lblSfondo.setBounds(0, 0, 439, 343);
+		lblSfondo.setBounds(0, 0, 457, 343);
 		frame.getContentPane().add(lblSfondo);
 	}
 

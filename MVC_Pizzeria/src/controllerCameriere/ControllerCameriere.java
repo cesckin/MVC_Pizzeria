@@ -23,8 +23,6 @@ public class ControllerCameriere implements ActionListener {
 	private GraficaCameriere graficaCameriere;
 	private GraficaCucina graficaCucina;
 
-	
-
 	public ControllerCameriere(GraficaCameriere graficaCameriere, GraficaCucina graficaCucina) {
 		super();
 		this.graficaCameriere = graficaCameriere;
@@ -33,8 +31,6 @@ public class ControllerCameriere implements ActionListener {
 		Ordinazione ordinazione = new Ordinazione("", "", false, false, false, false);
 		graficaCameriere.getTextNotifiche().setText(ordinazione.toStringBenvenuto());
 	}
-
-
 
 	public void actionPerformed(ActionEvent e) {
 
@@ -45,29 +41,42 @@ public class ControllerCameriere implements ActionListener {
 
 		if (e.getActionCommand().equalsIgnoreCase("Ordina")) {
 
-			ordinazione.setPizza(graficaCameriere.comboBoxOrdinazioni.getSelectedItem().toString());
-			ordinazione.setNumTavolo(graficaCameriere.comboBoxTavoli.getSelectedItem().toString());
-			ordinazione.setSegnalazioneCucina(true);
-			ordinazione.setPizzaPreparazione(true);
-			
-			// Scrivo
+			// Leggo
 			try {
-				FileOutputStream fos = null;
-				ObjectOutputStream oos = null;
-				fos = new FileOutputStream("Ordini.lin");
-				oos = new ObjectOutputStream(fos);
-				oos.writeObject(ordinazione);
-				oos.flush();
-				fos.close();
-
-			} catch (IOException e1) {
-				e1.printStackTrace();
+				fis = new FileInputStream("Ordini.lin");
+				ois = new ObjectInputStream(fis);
+				ordinazione = (Ordinazione) ois.readObject();
+			} catch (ClassNotFoundException | IOException e1) {
 			}
 			//
-			graficaCucina.getPanelGreen().setVisible(false);
-			graficaCucina.getPanelRed().setVisible(true);
-			graficaCameriere.getTextNotifiche().setText(ordinazione.toStringCameriere());
 
+			if (ordinazione.isSegnalazioneCucina() == true) {
+				graficaCameriere.getTextNotifiche().setText("Stanno già elaborando un'altra ordinazione...");
+				JOptionPane.showMessageDialog(null, "Stanno già elaborando un'altra ordinazione...");
+			} else {
+				ordinazione.setPizza(graficaCameriere.comboBoxOrdinazioni.getSelectedItem().toString());
+				ordinazione.setNumTavolo(graficaCameriere.comboBoxTavoli.getSelectedItem().toString());
+				ordinazione.setSegnalazioneCucina(true);
+				ordinazione.setPizzaPreparazione(true);
+
+				// Scrivo
+				try {
+					FileOutputStream fos = null;
+					ObjectOutputStream oos = null;
+					fos = new FileOutputStream("Ordini.lin");
+					oos = new ObjectOutputStream(fos);
+					oos.writeObject(ordinazione);
+					oos.flush();
+					fos.close();
+
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				//
+				graficaCucina.getPanelGreen().setVisible(false);
+				graficaCucina.getPanelRed().setVisible(true);
+				graficaCameriere.getTextNotifiche().setText(ordinazione.toStringCameriere());
+			}
 		}
 
 		if (e.getActionCommand().equalsIgnoreCase("Consegna piatto")) {
@@ -90,9 +99,9 @@ public class ControllerCameriere implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Pizza in preparazione...");
 
 			} else {
-				
+
 				ordinazione.setPizzaConsegnata(true);
-				
+
 				// Scrivo
 				try {
 					FileOutputStream fos = null;
@@ -106,7 +115,7 @@ public class ControllerCameriere implements ActionListener {
 					e1.printStackTrace();
 				}
 				//
-
+				JOptionPane.showMessageDialog(null, ordinazione.toStringConsegnatoPiattoCameriere());
 				graficaCameriere.getTextNotifiche().setText(ordinazione.toStringConsegnatoPiattoCameriere());
 
 				try {
